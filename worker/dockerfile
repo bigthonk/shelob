@@ -1,0 +1,15 @@
+FROM golang:1.20 as builder
+WORKDIR /app
+COPY go.mod go.sum ./
+RUN go mod download
+
+# Copy the entire worker directory, including robots subdir
+COPY worker/ worker/
+WORKDIR /app/worker
+RUN CGO_ENABLED=0 GOOS=linux go build -o worker main.go
+
+FROM alpine:latest
+RUN apk --no-cache add ca-certificates
+WORKDIR /app
+COPY --from=builder /app/worker/worker /app/worker
+ENTRYPOINT ["/app/worker"]
