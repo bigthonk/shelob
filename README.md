@@ -7,8 +7,6 @@ This project is a simple search engine written in Go. It includes:
 
 ## Running the Project
 
-1. Build and run the project:
-   ```bash
   go run cmd/crawler/main.go
   go run cmd/api/main.go
   curl "http://localhost:8080/search?q=Dogs"
