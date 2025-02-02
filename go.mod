@@ -1,8 +1,8 @@
 module shelob
 
-go 1.20
+go 1.18
 
 require (
-	github.com/gorilla/mux v1.8.0
-	golang.org/x/net v0.32.0
+	github.com/temoto/robotstxt v1.1.2
+	golang.org/x/net v0.34.0
 )
